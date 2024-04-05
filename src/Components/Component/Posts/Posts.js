@@ -16,7 +16,7 @@ const Posts = (props) => {
           try {
             setisloading(true);
             seterrMsg(null);
-            const response = await fetch("http://localhost:5000/Posts");
+            const response = await fetch("https://json-s-ud35.vercel.app/Posts");
             if (!response.ok) {
               throw Error(response.statusText ? response.statusText : "error");
             }
