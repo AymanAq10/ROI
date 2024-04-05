@@ -1,0 +1,1189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --LightBackGround: #ffffff;
+  --secondLightBackGround: #d4d3d2;
+  --LightColor: #333238;
+  --darkBackGround: #222528;
+  --SecondDarkBackGround: #1a1b1e;
+  --darkColor: #c3c3c6;
+  --input-colors: #333238;
+  --input-border-color: #3c3b41;
+}
+
+
+#light {
+  background-color: transparent;
+  color: #333238;
+}
+
+
+/* WELCOME PAGEs START -------------------------------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGINATION START ---------------------------------------------------------------------------------------------*/
+.PaginationList {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.PaginationList>button {
+  margin: 2% 0;
+  border: 2px solid var(--input-border-color);
+  border-radius: 8px;
+  background-color: #1f1e24;
+  color: var(--darkColor);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: 0.1s ease-in-out all;
+}
+
+#light .PaginationList>button {
+  background-color: var(--LightBackGround);
+  color: var(--LightColor);
+
+}
+
+#PaginationActive {
+  background-color: #028585 !important;
+  color: var(--darkColor) !important;
+  outline: 2px solid white !important;
+}
+
+/* WELCOME PAGINATION END   ---------------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGE HEADER START --------------------------------------------------------------------------------------------*/
+.WelcomeP_Header {
+  /* background-image: url('../scott-webb-UjupleczBOY-unsplash.jpg'); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* height:40vh; */
+}
+
+/* WELCOME PAGE HEADER NAV START -------------------------------------------------------------------------------------*/
+
+.WelcomeP_Header>nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh 3vh;
+}
+
+.WelcomeP_Header>nav>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  color: darkcyan !important;
+  gap: 0.5vh;
+  filter: brightness(110%);
+  font-size: 2.5rem;
+  transition: 0.1s ease-in-out all;
+}
+
+#light .WelcomeP_Header>nav>div {
+  color: #035a5a !important;
+}
+
+.WelcomeP_Header>nav>div>h1 {
+  font-size: 2.3rem !important;
+  text-shadow: none;
+}
+
+.WelcomeP_Header>nav>div>h1>a {
+  color: darkcyan !important;
+}
+
+#light .WelcomeP_Header>nav>div>h1>a {
+  color: #035a5a !important;
+
+}
+
+.WelcomeP_Header>nav>div:active {
+  transform: scale(0.9);
+}
+
+.WelcomeP_Header>nav>span>button,
+.WelcomeP_Header>nav>button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+
+  overflow: hidden;
+  /*this is for the newPost to hide the expanding thingy*/
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  background-color: darkcyan;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.WelcomeP_Header>nav>span>button::after,
+.WelcomeP_Header>nav>button::after {
+  content: '';
+  position: absolute;
+  top: 37%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 10px;
+  background: darkcyan;
+  transform-origin: center;
+  transform: scale(0);
+  border-radius: 20px;
+  transition: 0.2s ease-in-out all;
+
+  z-index: -1;
+}
+
+.WelcomeP_Header>nav>span>button:hover::after,
+.WelcomeP_Header>nav>button:hover::after {
+  transform: scale(10);
+  background-color: rgb(2, 89, 89);
+  transition: 0.7s all;
+}
+
+/* WELCOME PAGE HEADER NAV END   -----------------------------------------------------------------------------------*/
+
+.WelcomeP_Header>div {
+  margin: 5% auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.WelcomeP_Header>div>h1 {
+  font-family: 'Italianno', cursive;
+  font-size: 4rem;
+}
+
+/* WELCOME PAGE LOGIN&SIGNUP START ------------------------------------------------------------------------------------*/
+.WelcomeP_dev_login_signUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: none;
+
+  background-color: #2a2e3352;
+  z-index: 300;
+}
+
+
+
+.WelcomeP_dev_login_signUp {
+  padding: 2vh;
+}
+
+.WelcomeP_dev_login_signUp>div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: 0.25s ease-in-out all;
+
+}
+
+.WelcomeP_dev_login_signUp>div:nth-child(2) {
+  display: none;
+}
+
+.WelcomeP_dev_login_signUp>div>form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2vh;
+  padding: 2vh;
+  width: 22rem;
+  height: fit-content;
+
+  text-shadow: none;
+  border-radius: 8px;
+  color: var(--color-bg);
+  background-color: #30363d;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form {
+  background-color: var(--LightBackGround) !important;
+  color: var(--LightColor) !important;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form>div>div>h4 {
+  color: var(--LightColor) !important;
+}
+
+.WelcomeP_dev_login_signUp>div>form>label {
+  font-size: 1rem;
+}
+
+.WelcomeP_dev_login_signUp>div>form>input,
+.WelcomeP_dev_login_signUp_password_eye>input {
+  width: 100%;
+  height: 50px !important;
+  color: white;
+  background-color: #2a2e33;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 1.5vh 8vh 1.5vh 2vh;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form>input,
+#light .WelcomeP_dev_login_signUp_password_eye>input {
+  background-color: var(--darkColor) !important;
+  color: var(--LightColor) !important;
+}
+
+.WelcomeP_dev_login_signUp>div>form>button:nth-last-child(2) {
+  background-color: #008b8b !important;
+  border-radius: 8px;
+
+  padding: 1vh 2vh;
+  font-weight: bold;
+
+  cursor: pointer;
+  box-shadow: 0px 0.2rem 0px #015555;
+  transition: 0.1s ease-in-out all;
+}
+
+.WelcomeP_dev_login_signUp>div>form>button:nth-last-child(2):active {
+  transform: translateY(0.2rem);
+  box-shadow: 0px 0rem 0px #015555;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form>button:nth-last-child(2) {
+  background-color: #008b8b !important;
+  color: white !important;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form>button:nth-last-child(2):active {
+  box-shadow: 0px 0rem 0px #008b8b !important;
+
+}
+
+.WelcomeP_dev_login_signUp_password_eye {
+  position: relative;
+}
+
+.WelcomeP_dev_login_signUp_password_eye>span {
+  position: absolute;
+  right: 3%;
+  top: 20%;
+  width: 2rem;
+  height: 1.7rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.WelcomeP_dev_login_signUp>div>form>button {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+}
+
+#light .WelcomeP_dev_login_signUp>div>form>button {
+  color: var(--LightColor) !important;
+}
+
+.WelcomeP_dev_login_signUp>div>form>button:hover {
+  text-decoration: underline;
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>i {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.15s ease-in-out all;
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>i:hover {
+  background-color: #2a2e33;
+  border-radius: 8px;
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>i:active {
+  transform: scale(0.9);
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  color: #008b8b;
+  gap: 0.5vh;
+  font-size: 1.5rem;
+  transition: 0.1s ease-in-out all;
+}
+
+.WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>div>h4 {
+  white-space: nowrap;
+  color: var(--color-bg);
+}
+
+@media screen and (orientation: portrait) and (max-width: 400px) {
+  .WelcomeP_dev_login_signUp>div>form {
+    width: 15rem;
+
+  }
+
+  .WelcomeP_dev_login_signUp>div>form>div:nth-child(1)>div>h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 400px) {
+  .WelcomeP_dev_login_signUp>div {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: scroll;
+  }
+
+  .WelcomeP_dev_login_signUp>div:nth-child(1)>form {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    overflow: scroll;
+    background-color: #4446dd;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 524px) {
+
+  .WelcomeP_dev_login_signUp>div {
+    width: 100%;
+
+    padding: 0;
+  }
+
+  .WelcomeP_dev_login_signUp>div:nth-child(2)>form {
+
+
+    width: 100%;
+    border-radius: 0;
+    background-color: #4446dd;
+  }
+}
+
+/* WELCOME PAGE LOGIN&SIGNUP END   ------------------------------------------------------------------------------------*/
+
+.userProfilePic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  /* background-size: cover; */
+  background-color: #1a1c92;
+  cursor: pointer;
+  transition: 0.25s ease all;
+}
+
+.userProfilePic:hover {
+  box-shadow: 0 0 5px 1px #008b8b;
+  transform: scale(0.8);
+}
+
+.WelcomeP_Header>nav>span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* WELCOME PAGE HEADER END   -------------------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGE PROFILE START ------------------------------------------------------------------------------------------------*/
+.userProfileDiv {
+  position: absolute;
+  transform: translate(-24%, 65%) scale(0.9);
+  background-color: #30363d;
+  color: white !important;
+  text-shadow: none;
+
+  width: 20rem;
+  height: fit-content;
+  border-radius: 8px;
+  display: none;
+  transition: 0.15s ease-in-out all;
+  z-index: 100;
+}
+
+#light .userProfileDiv {
+  border: 2px solid var(--darkColor);
+  background-color: var(--LightBackGround) !important;
+  color: var(--LightColor) !important;
+}
+
+.userProfileDiv>div {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.25rem; */
+}
+
+.userProfileDiv>div>div {
+  background-color: #222528;
+  margin: 0.7rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  cursor: pointer;
+  transition: 0.1s ease-in-out all;
+}
+
+#light .userProfileDiv>div>div {
+  background-color: #cfcbcb;
+
+}
+
+.userProfileDiv>div>div:nth-last-child(1) {
+  width: fit-content;
+}
+
+.userProfileDiv>div>button,
+.LinkButton {
+  background-color: #cccccc12;
+  margin: 0.5rem 0.7rem;
+  padding: 1rem 0.5rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  color: white !important;
+  text-align: start;
+
+  cursor: pointer;
+  transition: 0.25s ease-in-out all;
+}
+
+#light .userProfileDiv>div>button,
+#light .LinkButton {
+  background-color: #dadcdf !important;
+  color: var(--LightColor) !important;
+}
+
+.userProfileDiv>div>div:hover {
+  background-color: #40464b;
+}
+
+#light .userProfileDiv>div>div:hover {
+  background-color: #b1aeae;
+
+}
+
+.userProfileDiv>div>button:hover,
+.LinkButton:hover {
+  background-color: #2a2e33;
+}
+
+
+
+#light .userProfileDiv>div>button:hover,
+#light .LinkButton:hover {
+  background-color: #ccc !important;
+
+
+  color: var(--LightColor) !important;
+}
+
+/* WELCOME PAGE PROFILE END   ------------------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGE PROFILE SETTINGS START ---------------------------------------------------------------------------------------*/
+
+.Avatar_Form {
+  background: #1f1e24;
+  transition: 0.25s ease-in-out all;
+}
+
+#light .Avatar_Form {
+  background-color: var(--LightBackGround) !important;
+  color: var(--LightColor) !important;
+  text-shadow: none;
+}
+
+.Avatar_Form>div {
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  margin: 0 1rem;
+}
+
+.Avatar_Form_div1,
+.Avatar_Form_div2,
+.Avatar_Form_div3 {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.6rem 0;
+  border-bottom: 0.1rem solid #4e4c53;
+}
+
+#light .Avatar_Form_div1,
+#light .Avatar_Form_div2,
+#light .Avatar_Form_div3 {
+  border-bottom: 0.1rem solid #a2a1a3;
+
+}
+
+.Avatar_Form_div1>div,
+.Avatar_Form_div2>div,
+.Avatar_Form_div3>div {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 100%;
+  padding: 1rem 0.5rem;
+
+}
+
+.Avatar_Form_div1>div:nth-child(2) {
+  display: grid;
+  justify-content: start;
+  grid-template-areas:
+    'IMAGE INFO'
+    'IMAGE INFO'
+    'IMAGE INFO';
+}
+
+.Avatar_Form_div1>div:nth-child(2)>div:nth-child(1) {
+  grid-area: IMAGE;
+}
+
+.Avatar_Form_div1>div:nth-child(2)>p {
+  color: #6d6c71;
+  text-shadow: none;
+}
+
+.Avatar_Form_div1>div:nth-child(2)>label {
+  background-color: var(--input-colors);
+  color: white;
+  border-radius: 8px;
+  border: 2px solid #3c3b41;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4rem 1.2rem;
+  text-shadow: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out all;
+}
+
+#light .Avatar_Form_div1>div:nth-child(2)>label {
+  background-color: var(--LightBackGround);
+  color: var(--LightColor);
+}
+
+.Avatar_Form_div1>div:nth-child(2)>label:active {
+  background-color: #3c3b41;
+}
+
+#light .Avatar_Form_div1>div:nth-child(2)>label:active {
+  background-color: rgb(226, 226, 226);
+}
+
+.Avatar_Form_div1>div:nth-child(2)>input {
+  display: none;
+}
+
+.Avatar_Form_div1>div>div>a>img {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+}
+
+
+.Avatar_Form_div2>div:nth-child(2)>input,
+.Avatar_Form_div2>div:nth-child(2)>textarea,
+.Avatar_Form_div3>div:nth-child(2)>input,
+.Avatar_Form_div3>div:nth-child(2)>div>input,
+.Avatar_Form_div2>div:nth-child(2)>button,
+.Avatar_Form_div3>div:nth-child(2)>button {
+  background-color: var(--input-colors) !important;
+  border: 2px solid #3c3b41 !important;
+  padding: 0.4rem 1.2rem !important;
+  border-radius: 8px !important;
+  color: white !important;
+  outline: none !important;
+  min-width: 17 rem;
+  max-width: 57rem;
+  height: 2.7rem !important;
+
+  transition: 0.1s ease-in-out all !important;
+}
+
+#light .Avatar_Form_div2>div:nth-child(2)>input,
+#light .Avatar_Form_div2>div:nth-child(2)>textarea,
+#light .Avatar_Form_div3>div:nth-child(2)>input,
+#light .Avatar_Form_div3>div:nth-child(2)>div>input {
+  background-color: var(--LightBackGround) !important;
+  color: var(--LightColor) !important;
+}
+
+
+
+.Avatar_Form_div2>div:nth-child(2)>input:focus,
+.Avatar_Form_div2>div:nth-child(2)>textarea:focus,
+.Avatar_Form_div3>div:nth-child(2)>input:focus,
+.Avatar_Form_div3>div:nth-child(2)>div>input:focus,
+.Avatar_Form_div2>div:nth-child(2)>button:focus,
+.Avatar_Form_div3>div:nth-child(2)>button:focus {
+  outline: 0.15rem solid white !important;
+
+}
+
+#light .Avatar_Form_div2>div:nth-child(2)>button:focus,
+#light .Avatar_Form_div3>div:nth-child(2)>button:focus {
+  outline: 1px solid var(--LightColor) !important;
+
+}
+
+.Avatar_Form_div2>div:nth-child(2)>textarea {
+  height: 7rem !important;
+}
+
+.Avatar_Form_div2_radio_div {
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr;
+  gap: 1rem;
+}
+
+.Avatar_Form_div2_radio_div>div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  height: 2.7rem;
+  color: white;
+  text-shadow: none;
+
+  cursor: pointer;
+}
+
+#light .Avatar_Form_div2_radio_div>div {
+  background-color: var(--LightBackGround);
+  color: var(--LightColor);
+}
+
+.Avatar_Form_div2_radio_div>div:hover {
+  background-color: var(--input-colors);
+}
+
+#light .Avatar_Form_div2_radio_div>div:hover {
+  background-color: #e5e8ec;
+
+}
+
+.Avatar_Form_div2_radio_div>div>label,
+.Avatar_Form_div2_radio_div>div>input {
+  position: relative;
+  cursor: pointer;
+}
+
+.Avatar_Form_div2_radio_div>div>input[type='radio']::after {
+  content: " ";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #30363d;
+  background-color: #2a2e33;
+  color: white;
+
+
+  transition: 0.25s ease-in-out all;
+}
+
+#light .Avatar_Form_div2_radio_div>div>input[type='radio']::after {
+  border: 2px solid #b1c7e0;
+  background-color: #c6daf1;
+}
+
+.Avatar_Form_div2_radio_div>div>input[type='radio']:checked::after {
+  content: "✔";
+  background-color: #008b8b;
+  color: white;
+  font-size: 1.2rem;
+}
+
+#light .Avatar_Form_div2_radio_div>div>input[type='radio']:checked::after {
+  background-color: #008b8b;
+
+}
+
+
+.Avatar_Form_div2>div:nth-child(2)>button,
+.Avatar_Form_div3>div:nth-child(2)>button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+
+  background-color: #008b8b !important;
+  border: 1px solid white !important;
+  width: 8rem;
+font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease-in-out all;
+}
+
+.Avatar_Form_div2>div:nth-child(2)>button:hover,
+.Avatar_Form_div3>div:nth-child(2)>button:hover {
+  background-color: #01a5a5;
+
+}
+
+.loadingIcon {
+  position: relative !important;
+  width: 32px !important;
+  height: 32px !important;
+
+  border-radius: 50% !important;
+  background: linear-gradient(#008b8b, white, #008b8b) !important;
+  filter: blur(0.5px) !important;
+  animation: loading 1.2s linear infinite !important;
+}
+
+.loadingIcon::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 27px;
+  height: 27px;
+
+  background: #008b8b;
+  border-radius: 50%;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg) !important;
+  }
+
+  100% {
+    transform: rotate(360deg) !important;
+  }
+}
+
+
+
+@media screen and (max-width: 900px) {
+  .Avatar_Form>div {
+    grid-template: auto / 1fr;
+  }
+
+  .Avatar_Form_div1>div:nth-child(2) {
+    gap: 0.5rem;
+  }
+}
+
+/* WELCOME PAGE PROFILE SETTINGS END   ---------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGE PROFILE PAGE START ------------------------------------------------------------------------------------------*/
+.ProfilePageDiv1 {
+  display: grid;
+  /* align-items: center; */
+  grid-template: auto / 1fr 3fr;
+  padding: 2rem;
+  color: white;
+  border-bottom: 2px solid #4e4c53;
+
+  background-color: #222528;
+  text-shadow: none;
+}
+
+#light .ProfilePageDiv1 {
+  background-color: var(--LightBackGround);
+  color: var(--LightColor);
+}
+
+.ProfilePageDiv1 div > a > img {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+}
+
+.ProfilePageDiv1 > div:nth-child(1) {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+
+}
+
+.ProfilePageDiv1 > div:nth-child(1) > div {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+  height: fit-content;
+}
+
+.ProfilePageDiv1 > div:nth-child(1) > div > svg, .ProfilePageDiv1 > div:nth-child(1) > div > h1 > a{
+  color: #056768 !important;
+}
+
+
+.ProfilePen {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #1f1e24;
+  border: 2px solid #6d7275;
+  color: #6d7275;
+
+  border-radius: 8px;
+  font-size: 2rem;
+  padding: 0.3rem;
+
+  transition: 0.25s ease-in-out all;
+  cursor: pointer;
+}
+
+#light .ProfilePen {
+  background-color: #d5d2e9;
+  border: 2px solid #acb0b3;
+}
+
+.ProfilePen:hover {
+  background-color: #6d7275;
+  border: 2px solid #1f1e24;
+  color: #1f1e24;
+}
+
+#light .ProfilePen:hover {
+  background-color: #c1bed6;
+  border: 2px solid #504e58;
+  color: #1f1e24;
+}
+
+
+
+.ProfilePageDiv1>div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 1rem;
+  width: 70%;
+}
+
+.ProfilePageDiv1>div:nth-child(2)>div {
+  display: grid;
+  grid-template: auto / 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.ProfilePageDiv1>div:nth-child(2)>div>div {
+  border-right: 2px solid #2a2e33;
+  width: 30vh;
+  height: 10vh;
+  padding-right: 0.5rem;
+}
+
+#light .ProfilePageDiv1>div:nth-child(2)>div>div {
+  border-right: 2px solid #b5b9bd;
+
+}
+
+.ProfilePageDiv1>div:nth-child(2)>div>div:nth-last-child(1) {
+  border: none;
+}
+
+#light .ProfilePageDiv1>div:nth-child(2)>div>div:nth-last-child(1) {
+  border: none;
+}
+
+.ProfilePageDiv1>div:nth-child(2)>div>div>h4 {
+  line-break: anywhere;
+  font-weight: 400;
+  height: 8vh;
+
+  overflow: auto;
+
+}
+
+.ProfilePageDiv1>div:nth-child(2)>p {
+  background-color: #1f1e24;
+  padding: 1rem;
+  border-radius: 8px;
+  height: 10rem;
+  width: 94.5vh;
+
+  overflow-y: auto;
+}
+
+#light .ProfilePageDiv1>div:nth-child(2)>p {
+  background-color: #d5d2e9;
+  color: var(--LightColor);
+
+}
+
+
+.ProfilePageDiv2 {
+  background-color: var(--SecondDarkBackGround);
+  color: var(--darkColor);
+  height: 100%;
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  /* display:flex; */
+  justify-content: center;
+}
+
+.ProfilePage2 {
+  display: flex;
+}
+
+#light .ProfilePageDiv2 {
+  background-color: var(--secondLightBackGround);
+  color: var(--LightColor);
+}
+
+.ProfilePageDiv2>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.ProfilePageDiv2>div>h2 {
+  border-top: 2px solid var(--input-border-color);
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.ProfilePageDiv2>div>div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 50rem;
+  padding: 1rem 0;
+  text-align: center;
+  overflow-y: auto;
+
+}
+
+.ProfilePageDiv2>div>div>p {
+  position: absolute;
+  top: 5%;
+}
+
+.ProfilePageDiv2>div>div>.post>.parent_span,
+.ProfilePageDiv2>div>div>.post>.bottom_div,
+.ProfilePageDiv2>div>div>.post>.div_react>div:nth-child(2) {
+  display: none;
+}
+
+.ProfilePageDiv2>div>div>.post {
+  /* background-color: #015555 !important; */
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+}
+
+.ProfilePageDiv1,
+.ProfilePageDiv2 {
+  transition: 0.25s ease-in-out all;
+}
+
+
+
+@media screen and (max-width: 1507px) {
+  .ProfilePageDiv1 {
+    grid-template: auto / 1fr;
+
+  }
+
+  .ProfilePageDiv1>div:nth-child(1) {
+    padding: 0;
+  }
+
+  .ProfilePageDiv1>div:nth-child(2) {
+    width: 100%;
+  }
+
+  .ProfilePageDiv1>div {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+  }
+
+  .userProfileDiv {
+    width: 14rem;
+  }
+
+  .userProfileDiv>div>div {
+    padding: 7px;
+    font-size: 10px;
+  }
+
+  .userProfileDiv>div>button,
+  .LinkButton {
+    padding: 0.88rem 0.5rem;
+    font-size: 11px;
+  }
+
+
+}
+
+@media screen and (max-width: 965px) {
+  .ProfilePageDiv1>div:nth-child(2)>div {
+    grid-template: auto / 1fr;
+  }
+
+  .ProfilePageDiv1>div:nth-child(2)>div>div {
+    width: 15rem;
+    border: none;
+    border-bottom: 2px solid #30363d;
+  }
+
+  #light .ProfilePageDiv1>div:nth-child(2)>div>div {
+    border: none;
+    border-bottom: 2px solid #b5b9bd;
+
+  }
+
+  .ProfilePageDiv1>div:nth-child(2)>p {
+    width: 100%;
+  }
+
+
+  .ProfilePageDiv2 {
+    grid-template: auto / 1fr;
+    display: grid;
+  }
+
+  .ProfilePageDiv2>div>div>.post {
+    width: 100%;
+  }
+
+  .ProfilePage2Div{
+    width: 100% !important;
+  }
+}
+
+.postButtons{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.postButtons > button, .postButtons > button > a{
+  color: #fff !important;
+}
+
+.postButtons > button{
+  
+  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  white-space: nowrap;
+  background-color: #008b8b !important;
+  border: 1px solid white !important;
+  border-radius: 8px;
+  padding: 0.4rem 1.2rem;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+.postButtons > button:focus {
+  outline: 0.15rem solid white !important;
+
+}
+
+#light .postButtons > button {
+  outline: 1px solid var(--LightColor) !important;
+
+}
+
+/* WELCOME PAGE PROFILE PAGE END   ------------------------------------------------------------------------------------------*/
+
+/* WELCOME PAGES END   ----------------------------------------------------------------------------------------------------------*/
+
+
+.Toastify__toast-theme--dark {
+  background-color: #006d6d !important;
+  border: 2px solid var(--LightBackGround) !important;
+  border-radius: 8px !important;
+}
+
+.Setting-icon {
+  width: 3em;
+  height: 1.56em;
+  color: #C1C1C1;
+}
+#light .Setting-icon{
+  color: #333238;
+}
+
+.LinkButton:hover > div > .Setting-icon {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    transition: .4s;
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
