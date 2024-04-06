@@ -42,9 +42,9 @@ const CreatePost = () => {
                 autoClose: 500,
               });
               console.log(img);
-            // setTimeout(() => {
-            //     navigate('/')
-            // }, 1000);
+            setTimeout(() => {
+                navigate('/')
+            }, 1000);
         }
         catch(err){
             console.log(err);
