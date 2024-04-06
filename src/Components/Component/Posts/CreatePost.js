@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 // import Footer from "../Footer";
 import WelcomePHeader from '../welcomePage/WelcomeP_header'
 import '../welcomePage/WelcomeP.css'
-import imageCompression from 'compressorjs';
+import imageCompression from 'browser-image-compression'; // Import image compression library
 
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -41,9 +41,10 @@ const CreatePost = () => {
             toast.success("Post was added successfully!", {
                 autoClose: 500,
               });
-            setTimeout(() => {
-                navigate('/')
-            }, 1000);
+              console.log(img);
+            // setTimeout(() => {
+            //     navigate('/')
+            // }, 1000);
         }
         catch(err){
             console.log(err);
@@ -75,17 +76,14 @@ const CreatePost = () => {
 
 
     const [imageHolderChanged, setImageHolderChanged] = useState()
-
-    const handleImageDrop = (e) => {
-        e.preventDefault()
+    const handleImageDrop = async (e) => {
+      e.preventDefault();
         const file = e.dataTransfer.files[0]
-        
         if (file.size > 2e+7 ) {
           toast.warn("File size must be less than 20MB!", {
             autoClose: 2000,
           });
           e.target.value = ''
-          return
         }
         
         const extension = file.name.split('.').pop().toLowerCase()
@@ -93,30 +91,28 @@ const CreatePost = () => {
           toast.warn('Not an image or gif')
           e.target.value = ''
           console.log('ey');
-          return
         }
+
+  
       
-        const compressOptions = {
-            maxWidth: 800,
-            maxHeight: 600,
-            quality: 0.8, // Adjust quality as needed (0.0 - 1.0)
-            success(result) {
-              // 'result' is the compressed image
+          try {
+              const compressedFile = await imageCompression(file, {
+                  maxSizeMB: 1,
+                  maxWidthOrHeight: 800,
+                  useWebWorker: true,
+              });
+      
               const reader = new FileReader();
-              reader.readAsDataURL(result);
+              reader.readAsDataURL(compressedFile);
               reader.onload = () => {
-                // Send the compressed image to your API
-                // Example: fetch('/upload', { method: 'POST', body: reader.result });
-                setImageHolderChanged(reader.result);
+                  setImageHolderChanged(reader.result);
               };
-            },
-            error(err) {
-              console.error('Image compression error:', err);
-            },
-          };
-          
-          imageCompression(file, compressOptions);
-      }
+              console.log(imageHolder);
+          } catch (error) {
+              console.error('Image compression error:', error);
+          }
+      };
+      
       
 
     // Image Click Function START=================================================
@@ -124,8 +120,9 @@ const CreatePost = () => {
         imageHolder.current.click()
     }
     
-    const ImageChanged = (e) => {
+    const ImageChanged =async (e) => {
         const file = e.target.files[0]
+        console.log(file)
         if (file.size > 2e+7) {
             toast.warn("File size must be less than 20MB!", {
                 autoClose: 2000,
@@ -134,27 +131,22 @@ const CreatePost = () => {
         }
         else{
             // Assuming 'file' is the input file from an <input type="file"> element
-            const compressOptions = {
-              maxWidth: 800,
-              maxHeight: 600,
-              quality: 0.8, // Adjust quality as needed (0.0 - 1.0)
-              success(result) {
-                // 'result' is the compressed image
-                const reader = new FileReader();
-                reader.readAsDataURL(result);
-                reader.onload = () => {
-                  // Send the compressed image to your API
-                  // Example: fetch('/upload', { method: 'POST', body: reader.result });
+            try {
+              const compressedFile = await imageCompression(file, {
+                  maxSizeMB: 1,
+                  maxWidthOrHeight: 800,
+                  useWebWorker: true,
+              });
+      
+              const reader = new FileReader();
+              reader.readAsDataURL(compressedFile);
+              reader.onload = () => {
                   setImageHolderChanged(reader.result);
-                };
-              },
-              error(err) {
-                console.error('Image compression error:', err);
-              },
-            };
-            
-            imageCompression(file, compressOptions);
-            
+              };
+          } catch (error) {
+              console.error('Image compression error:', error);
+          }
+
         }
     }
     // Image Click Function END  =================================================
