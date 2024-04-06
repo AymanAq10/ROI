@@ -26,7 +26,7 @@ export default function WelcomeP_Profile_page() {
     const [likedPosts, setLikedPosts] = useState()
     useEffect(() => {
         if (logged) {
-             axios.get(`http://localhost:5000/Customer/${userID}`)
+             axios.get(`https://json-s-two.vercel.app/Customer/${userID}`)
             .then(data => {
               setUserProfile(data.data.defaultPic)
               setUserName(data.data.UserName)
@@ -36,7 +36,7 @@ export default function WelcomeP_Profile_page() {
               setUserBIO(data.data.Bio)
              })
              
-             axios.get('http://localhost:5000/Posts/')
+             axios.get('https://json-s-two.vercel.app/Posts/')
              .then(data => {
                 console.log(data)
                 setPosts(data.data.reverse().filter(f => f.UserId == parseInt(localStorage.getItem('userID')) ))

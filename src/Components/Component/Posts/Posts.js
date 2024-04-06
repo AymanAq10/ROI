@@ -36,7 +36,7 @@ const Posts = (props) => {
 
     const Delete = (id) => {
         // setposts([...posts.filter((e) => e.id !== id)])
-        fetch(`http://localhost:5000/Posts/${parseInt(id)}`,{
+        fetch(`https://json-s-two.vercel.app/Posts/${parseInt(id)}`,{
             method:'DELETE',
         }).then(()=>{
             alert('post deleted')

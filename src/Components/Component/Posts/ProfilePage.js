@@ -22,7 +22,7 @@ export default function Profile_Post() {
 
     const [posts, setPosts] = useState()
     useEffect(() => {
-        axios.get(`http://localhost:5000/Customer/${parseInt(id.id)}`)
+        axios.get(`https://json-s-two.vercel.app/Customer/${parseInt(id.id)}`)
             .then(data => {
                 setUserProfile(data.data.defaultPic)
                 setUserName(data.data.UserName)
@@ -32,7 +32,7 @@ export default function Profile_Post() {
                 setUserBIO(data.data.Bio)
             })
 
-        axios.get('http://localhost:5000/Posts/')
+        axios.get('https://json-s-two.vercel.app/Posts/')
             .then(data => setPosts(data.data.filter(f => f.UserId === parseInt(id.id))))
 
     }, [id])
