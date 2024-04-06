@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 // import Footer from "../Footer";
 import WelcomePHeader from '../welcomePage/WelcomeP_header'
 import '../welcomePage/WelcomeP.css'
+import imageCompression from 'compressorjs';
 
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -95,11 +96,26 @@ const CreatePost = () => {
           return
         }
       
-        const reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onload = () => {
-          setImageHolderChanged(reader.result)
-        }
+        const compressOptions = {
+            maxWidth: 800,
+            maxHeight: 600,
+            quality: 0.8, // Adjust quality as needed (0.0 - 1.0)
+            success(result) {
+              // 'result' is the compressed image
+              const reader = new FileReader();
+              reader.readAsDataURL(result);
+              reader.onload = () => {
+                // Send the compressed image to your API
+                // Example: fetch('/upload', { method: 'POST', body: reader.result });
+                setImageHolderChanged(reader.result);
+              };
+            },
+            error(err) {
+              console.error('Image compression error:', err);
+            },
+          };
+          
+          imageCompression(file, compressOptions);
       }
       
 
@@ -117,11 +133,28 @@ const CreatePost = () => {
               e.target.value = ''
         }
         else{
-            const reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = () => {
-                setImageHolderChanged(reader.result)
-            }
+            // Assuming 'file' is the input file from an <input type="file"> element
+            const compressOptions = {
+              maxWidth: 800,
+              maxHeight: 600,
+              quality: 0.8, // Adjust quality as needed (0.0 - 1.0)
+              success(result) {
+                // 'result' is the compressed image
+                const reader = new FileReader();
+                reader.readAsDataURL(result);
+                reader.onload = () => {
+                  // Send the compressed image to your API
+                  // Example: fetch('/upload', { method: 'POST', body: reader.result });
+                  setImageHolderChanged(reader.result);
+                };
+              },
+              error(err) {
+                console.error('Image compression error:', err);
+              },
+            };
+            
+            imageCompression(file, compressOptions);
+            
         }
     }
     // Image Click Function END  =================================================
