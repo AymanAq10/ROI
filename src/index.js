@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 // import 'bootstrap/dist/js/bootstrap.js';    
 import Routers from './Components/Routers';
 import Login_reducer from './Components/redux_setting/reducer';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = createStore(Login_reducer)
 root.render(
@@ -20,6 +21,7 @@ root.render(
     // <CookiesProvider>
         <BrowserRouter>
             <Provider store={store}>
+                <SpeedInsights/>
                 <Routers />
             </Provider>
         </BrowserRouter>
