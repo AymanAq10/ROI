@@ -21,6 +21,7 @@ const CreatePost = () => {
     const [length, setLength] = useState(0)
     const imageHolder        = useRef()
     const spanImageHolder    = useRef()
+    const [imageHolderChanged, setImageHolderChanged] = useState()
     
 
     function BioCharacterLenght(e) {
@@ -41,7 +42,7 @@ const CreatePost = () => {
             toast.success("Post was added successfully!", {
                 autoClose: 500,
               });
-              console.log(img);
+              console.log(imageHolderChanged);
             setTimeout(() => {
                 navigate('/')
             }, 1000);
@@ -75,43 +76,42 @@ const CreatePost = () => {
     // for styling drop img END
 
 
-    const [imageHolderChanged, setImageHolderChanged] = useState()
-    const handleImageDrop = async (e) => {
-      e.preventDefault();
-        const file = e.dataTransfer.files[0]
-        if (file.size > 2e+7 ) {
-          toast.warn("File size must be less than 20MB!", {
-            autoClose: 2000,
-          });
-          e.target.value = ''
-        }
-        
-        const extension = file.name.split('.').pop().toLowerCase()
-        if (!['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
-          toast.warn('Not an image or gif')
-          e.target.value = ''
-          console.log('ey');
-        }
 
-  
-      
-          try {
-              const compressedFile = await imageCompression(file, {
-                  maxSizeMB: 1,
-                  maxWidthOrHeight: 800,
-                  useWebWorker: true,
-              });
-      
-              const reader = new FileReader();
-              reader.readAsDataURL(compressedFile);
-              reader.onload = () => {
-                  setImageHolderChanged(reader.result);
-              };
-              console.log(imageHolder);
-          } catch (error) {
-              console.error('Image compression error:', error);
-          }
-      };
+    const handleImageDrop = async (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file.size > 2e+7) {
+            toast.warn("File size must be less than 20MB!", { autoClose: 2000 });
+            e.target.value = '';
+            return;
+        }
+    
+        const extension = file.name.split('.').pop().toLowerCase();
+        if (!['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+            toast.warn('Not an image or gif');
+            e.target.value = '';
+            console.log('ey');
+            return;
+        }
+    
+        try {
+            const compressedFile = await imageCompression(file, {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 800,
+                useWebWorker: true,
+            });
+            const reader = new FileReader();
+            reader.readAsDataURL(compressedFile);
+            reader.onload = async() => {
+                const blob = await fetch(reader.result).then((res) => res.blob());
+                const imageUrl = URL.createObjectURL(blob);
+                setImageHolderChanged(imageUrl);
+            };
+        } catch (error) {
+            console.error('Image compression error:', error);
+        }
+    };
+    
       
       
 
@@ -122,7 +122,6 @@ const CreatePost = () => {
     
     const ImageChanged =async (e) => {
         const file = e.target.files[0]
-        console.log(file)
         if (file.size > 2e+7) {
             toast.warn("File size must be less than 20MB!", {
                 autoClose: 2000,
@@ -132,20 +131,22 @@ const CreatePost = () => {
         else{
             // Assuming 'file' is the input file from an <input type="file"> element
             try {
-              const compressedFile = await imageCompression(file, {
-                  maxSizeMB: 1,
-                  maxWidthOrHeight: 800,
-                  useWebWorker: true,
-              });
-      
-              const reader = new FileReader();
-              reader.readAsDataURL(compressedFile);
-              reader.onload = () => {
-                  setImageHolderChanged(reader.result);
-              };
-          } catch (error) {
-              console.error('Image compression error:', error);
-          }
+                const compressedFile = await imageCompression(file, {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 800,
+                    useWebWorker: true,
+                });
+                const reader = new FileReader();
+                reader.readAsDataURL(compressedFile);
+                reader.onload = async() => {
+                    const blob = await fetch(reader.result).then((res) => res.blob());
+                    const imageUrl = URL.createObjectURL(blob);
+                    console.log(imageUrl);
+                    setImageHolderChanged(imageUrl);
+                };
+            } catch (error) {
+                console.error('Image compression error:', error);
+            }
 
         }
     }
