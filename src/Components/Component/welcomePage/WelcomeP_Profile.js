@@ -18,7 +18,7 @@ export default function WelcomeP_Profile() {
     const [userName,setUserName] = useState()
     useEffect(() => {
         if (logged) {
-            axios.get(`https://json-s-two.vercel.app/Customer/${userID}`)
+            axios.get(`http://localhost:3002/Customer/${userID}`)
             .then(data => {
               setUserProfile(data.data.defaultPic)
               setUserName(data.data.UserName)

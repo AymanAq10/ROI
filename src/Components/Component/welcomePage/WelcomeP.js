@@ -91,7 +91,7 @@ export default function WelcomeP() {
         const password = formData.get('Password')
     
         try{
-            const data = await axios.get('https://json-s-two.vercel.app/Customer')
+            const data = await axios.get('http://localhost:3002/Customer')
             
                     const customer          = data.data.find(f => f.Email === email && f.Password === password)
                     const customer_email    = data.data.find(f => f.Email === email )
@@ -135,7 +135,7 @@ export default function WelcomeP() {
 
         try {
             if (Password === chkPassword && Password.length >= 8) {
-                const response = await axios.get("https://json-s-two.vercel.app/Customer");
+                const response = await axios.get("http://localhost:3002/Customer");
                 const customer = response.data.find((f) => f.Email === Email);
                 if (customer) {
                   toast.info("Someone already has this email address!", {
@@ -143,7 +143,7 @@ export default function WelcomeP() {
                   });
                 }
             else {
-                    const data = await axios.post("https://json-s-two.vercel.app/Customer", {
+                    const data = await axios.post("http://localhost:3002/Customer", {
                           UserName,
                           Email,
                           Password,
@@ -178,7 +178,7 @@ export default function WelcomeP() {
     const [totalPosts,   setTotalPosts] = useState();
 
     const totalPostsChecker = async () => {
-        const data = await axios.get('https://json-s-two.vercel.app/Posts')
+        const data = await axios.get('http://localhost:3002/Posts')
         setTotalPosts(data.data.length);
     }
     totalPostsChecker()

@@ -19,8 +19,8 @@ export default function Comments({ id, post, userID }) {
   useEffect(() => {
       async function fetchData() {
         const [commentsResponse, customersResponse] = await Promise.all([
-          axios.get(`https://json-s-two.vercel.app/Posts/${id}`),
-          axios.get(`https://json-s-two.vercel.app/Customer/`),
+          axios.get(`http://localhost:3002/Posts/${id}`),
+          axios.get(`http://localhost:3002/Customer/`),
           
         ]);
         setComments(commentsResponse.data.commentSection);
@@ -30,7 +30,7 @@ export default function Comments({ id, post, userID }) {
     if (logged) {
       async function fetchUser() {
         try{
-          const response = await axios.get(`https://json-s-two.vercel.app/Customer/${userID}`)
+          const response = await axios.get(`http://localhost:3002/Customer/${userID}`)
           setUser(response.data)
         }
         catch(err){
@@ -67,7 +67,7 @@ export default function Comments({ id, post, userID }) {
     const updatedComments = [...comments, newComment];
     const updatedPost     = { ...post, commentSection: updatedComments };
     if (logged) {
-      await axios.patch(`https://json-s-two.vercel.app/Posts/${id}`, updatedPost);
+      await axios.patch(`http://localhost:3002/Posts/${id}`, updatedPost);
       setComments(updatedComments);
     }
   };
@@ -78,7 +78,7 @@ export default function Comments({ id, post, userID }) {
     const updatedPost     = {...post, commentSection: updatedComments };
 
     if(logged){
-      await axios.patch(`https://json-s-two.vercel.app/Posts/${id}`, updatedPost);
+      await axios.patch(`http://localhost:3002/Posts/${id}`, updatedPost);
       setComments(updatedComments);
       if (updatedComments.length === 0) {
         window.location.reload()

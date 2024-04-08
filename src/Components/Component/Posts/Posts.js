@@ -16,7 +16,7 @@ const Posts = (props) => {
           try {
             setisloading(true);
             seterrMsg(null);
-            const response = await fetch("https://json-s-two.vercel.app/posts");
+            const response = await fetch("http://localhost:3002/posts");
             if (!response.ok) {
               throw Error(response.statusText ? response.statusText : "error");
             }
@@ -36,7 +36,7 @@ const Posts = (props) => {
 
     const Delete = (id) => {
         // setposts([...posts.filter((e) => e.id !== id)])
-        fetch(`https://json-s-two.vercel.app/Posts/${parseInt(id)}`,{
+        fetch(`http://localhost:3002/Posts/${parseInt(id)}`,{
             method:'DELETE',
         }).then(()=>{
             alert('post deleted')

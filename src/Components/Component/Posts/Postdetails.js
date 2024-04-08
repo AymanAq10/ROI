@@ -41,7 +41,7 @@ const Postdetails = () => {
     useEffect(() => {
         setisloading(true);
         seterrMsg(null);
-        fetch(`https://json-s-two.vercel.app/Posts/${parseInt(id)}`)
+        fetch(`http://localhost:3002/Posts/${parseInt(id)}`)
             .then((res) => {
                 if (!res.ok) {
                     throw Error(res.statusText ? res.statusText : "error");
@@ -61,7 +61,7 @@ const Postdetails = () => {
 
     useEffect(() => {
         if (posts) {
-            axios.get(`https://json-s-two.vercel.app/Customer/${parseInt(posts.UserId)}`)
+            axios.get(`http://localhost:3002/Customer/${parseInt(posts.UserId)}`)
                 .then((d) => {
                     let { defaultPic, UserName } = d.data
                     setImg(defaultPic)
@@ -165,7 +165,7 @@ const Login_Form = async (e) => {
     const password = formData.get('Password')
 
     try{
-        const data = await axios.get('https://json-s-two.vercel.app/Customer')
+        const data = await axios.get('http://localhost:3002/Customer')
         
                 const customer          = data.data.find(f => f.Email === email && f.Password === password)
                 const customer_email    = data.data.find(f => f.Email === email )
@@ -209,7 +209,7 @@ const Signup_Form = async (e) => {
 
     try {
         if (Password === chkPassword && Password.length >= 8) {
-            const response = await axios.get("https://json-s-two.vercel.app/Customer");
+            const response = await axios.get("http://localhost:3002/Customer");
             const customer = response.data.find((f) => f.Email === Email);
             if (customer) {
               toast.info("Someone already has this email address!", {
@@ -217,7 +217,7 @@ const Signup_Form = async (e) => {
               });
             }
         else {
-                const data = await axios.post("https://json-s-two.vercel.app/Customer", {
+                const data = await axios.post("http://localhost:3002/Customer", {
                       UserName,
                       Email,
                       Password,

@@ -29,12 +29,12 @@ const Post = (props) => {
 
     useEffect(()=>{
 
-            axios.get(`https://json-s-two.vercel.app/Customer/${parseInt(props.UserId)}`)
+            axios.get(`http://localhost:3002/Customer/${parseInt(props.UserId)}`)
             .then(data=>{
                 setImg(data.data.defaultPic);
                 setUsername(data.data.UserName)
             })
-            axios.get(`https://json-s-two.vercel.app/Posts/${props.id}`)
+            axios.get(`http://localhost:3002/Posts/${props.id}`)
             .then(data => {
                 data.data.usersWhoLikedIt.filter(f => f === userID).length !== 0 ? setLike(true) : setLike(false)
                 setUsersLikes(data.data.usersWhoLikedIt.length)
@@ -45,20 +45,20 @@ const Post = (props) => {
     const WriteYourWayIntoThey_reHeart = async () => {
 
         if(logged){
-            const data = await axios.get(`https://json-s-two.vercel.app/Posts/${props.id}`)
+            const data = await axios.get(`http://localhost:3002/Posts/${props.id}`)
             let usersWhoLikedIt = [...data.data.usersWhoLikedIt];
 
             if (data.data.usersWhoLikedIt.find(f => f === userID)) {
                 usersWhoLikedIt = usersWhoLikedIt.filter(f => f !== userID)
                 setUsersLikes(usersWhoLikedIt.length)
                 setLike(false)
-                axios.patch(`https://json-s-two.vercel.app/Posts/${props.id}`, {usersWhoLikedIt})
+                axios.patch(`http://localhost:3002/Posts/${props.id}`, {usersWhoLikedIt})
             }
             else{
                 usersWhoLikedIt.push(userID)
                 setUsersLikes(usersWhoLikedIt.length)
                 setLike(true)
-                axios.patch(`https://json-s-two.vercel.app/Posts/${props.id}`, {usersWhoLikedIt})
+                axios.patch(`http://localhost:3002/Posts/${props.id}`, {usersWhoLikedIt})
             }
         }
         else{
@@ -89,7 +89,7 @@ const Post = (props) => {
     const deletePost = async (e) => {
         if (logged) {
             try{
-                const data = await axios.delete(`https://json-s-two.vercel.app/posts/${e}`)
+                const data = await axios.delete(`http://localhost:3002/posts/${e}`)
                 toast.success('Post was deleted successfully!')
                 window.location.reload()
             }
