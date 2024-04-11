@@ -29,12 +29,12 @@ const Post = (props) => {
 
     useEffect(()=>{
 
-            axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Customer/${parseInt(props.UserId)}`)
+            axios.get(`https://some-foods.onrender.com/Customer/${parseInt(props.UserId)}`)
             .then(data=>{
                 setImg(data.data.defaultPic);
                 setUsername(data.data.UserName)
             })
-            axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${props.id}`)
+            axios.get(`https://some-foods.onrender.com/Posts/${props.id}`)
             .then(data => {
                 data.data.usersWhoLikedIt.filter(f => f === userID).length !== 0 ? setLike(true) : setLike(false)
                 setUsersLikes(data.data.usersWhoLikedIt.length)
@@ -45,20 +45,20 @@ const Post = (props) => {
     const WriteYourWayIntoThey_reHeart = async () => {
 
         if(logged){
-            const data = await axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${props.id}`)
+            const data = await axios.get(`https://some-foods.onrender.com/Posts/${props.id}`)
             let usersWhoLikedIt = [...data.data.usersWhoLikedIt];
 
             if (data.data.usersWhoLikedIt.find(f => f === userID)) {
                 usersWhoLikedIt = usersWhoLikedIt.filter(f => f !== userID)
                 setUsersLikes(usersWhoLikedIt.length)
                 setLike(false)
-                axios.patch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${props.id}`, {usersWhoLikedIt})
+                axios.patch(`https://some-foods.onrender.com/Posts/${props.id}`, {usersWhoLikedIt})
             }
             else{
                 usersWhoLikedIt.push(userID)
                 setUsersLikes(usersWhoLikedIt.length)
                 setLike(true)
-                axios.patch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${props.id}`, {usersWhoLikedIt})
+                axios.patch(`https://some-foods.onrender.com/Posts/${props.id}`, {usersWhoLikedIt})
             }
         }
         else{
@@ -89,7 +89,7 @@ const Post = (props) => {
     const deletePost = async (e) => {
         if (logged) {
             try{
-                const data = await axios.delete(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/posts/${e}`)
+                const data = await axios.delete(`https://some-foods.onrender.com/posts/${e}`)
                 toast.success('Post was deleted successfully!')
                 window.location.reload()
             }

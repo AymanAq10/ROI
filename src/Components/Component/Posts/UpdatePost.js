@@ -23,7 +23,7 @@ const UpdatePost = () => {
     useEffect(() => {
         const FetchPost = async () => {
             try{
-                const data = await axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${id.id}`)
+                const data = await axios.get(`https://some-foods.onrender.com/Posts/${id.id}`)
                 console.log(data.data);
                 setImageHolderChanged(data.data.img)
                 setTitle(data.data.title)
@@ -60,7 +60,7 @@ const UpdatePost = () => {
         const body              = formData.get('body')
         const img               = imageHolderChanged
         try{
-            await axios.patch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/${id.id}`, {title, body, img})
+            await axios.patch(`https://some-foods.onrender.com/Posts/${id.id}`, {title, body, img})
             toast.success("Post was modified successfully!", {
                 autoClose: 500,
               });

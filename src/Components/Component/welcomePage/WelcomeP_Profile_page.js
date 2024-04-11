@@ -26,7 +26,7 @@ export default function WelcomeP_Profile_page() {
     const [likedPosts, setLikedPosts] = useState()
     useEffect(() => {
         if (logged) {
-             axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Customer/${userID}`)
+             axios.get(`https://some-foods.onrender.com/Customer/${userID}`)
             .then(data => {
               setUserProfile(data.data.defaultPic)
               setUserName(data.data.UserName)
@@ -36,7 +36,7 @@ export default function WelcomeP_Profile_page() {
               setUserBIO(data.data.Bio)
              })
              
-             axios.get('https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts/')
+             axios.get('https://some-foods.onrender.com/Posts/')
              .then(data => {
                 console.log(data)
                 setPosts(data.data.reverse().filter(f => f.UserId == parseInt(localStorage.getItem('userID')) ))
