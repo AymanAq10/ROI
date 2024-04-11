@@ -35,7 +35,7 @@ const Update = () => {
         setpostdata({...postdata,[name]:value});
     }
     useEffect(()=>{
-        fetch(`http://localhost:3002/posts/${parseInt(id)}`)
+        fetch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/posts/${parseInt(id)}`)
         .then((res)=>res.json())
         .then((data)=>{
             settitle(data.title);
@@ -46,7 +46,7 @@ const Update = () => {
     },[id])
     function submitfunc(e){
         e.preventDefault();
-        fetch(`http://localhost:3002/posts/${parseInt(id)}`,{
+        fetch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/posts/${parseInt(id)}`,{
             method:"PATCH",
             headers:{"Content-type":"application/json"},
             body:JSON.stringify({

@@ -33,7 +33,7 @@ export default function WelcomeP_Profile_settings() {
   
     useEffect(() => {
       if (logged) {
-        axios.get(`http://localhost:3002/Customer/${userID}`)
+        axios.get(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Customer/${userID}`)
         .then(data => {
           const {UserName,defaultPic,Email,Password,Gender,Bio,Location} = data.data
           setUserProfile(defaultPic)
@@ -118,7 +118,7 @@ export default function WelcomeP_Profile_settings() {
     const Gender        = formData.get('Gender')
 
     try{
-      await axios.patch(`http://localhost:3002/Customer/${userID}`, {UserName, Email, defaultPic, Location, Bio, Gender})
+      await axios.patch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Customer/${userID}`, {UserName, Email, defaultPic, Location, Bio, Gender})
       toast.success(`Profile Info Updated Successfully!`,{autoClose:1000})
       setLoading1(true)
       setTimeout(() => {
@@ -141,7 +141,7 @@ export default function WelcomeP_Profile_settings() {
 
     try{
       if (OldPassword === userPassword && Password === ConformPassword && Password.length >= 8) {
-        axios.patch(`http://localhost:3002/Customer/${userID}`, {Password})
+        axios.patch(`https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Customer/${userID}`, {Password})
         toast.success('Password Updated Successfully!',{autoClose:1000})
         setLoading2(true)
         setTimeout(() => {

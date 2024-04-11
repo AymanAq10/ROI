@@ -38,7 +38,7 @@ const CreatePost = () => {
         const usersWhoLikedIt   = []
         const commentSection    = []
         try{
-            await axios.post('http://localhost:3002/Posts', {title, body, UserId, usersWhoLikedIt, commentSection, img})
+            await axios.post('https://json-server-cf7m1b42d-aakartits-projects.vercel.app/Posts', {title, body, UserId, usersWhoLikedIt, commentSection, img})
             toast.success("Post was added successfully!", {
                 autoClose: 500,
               });
