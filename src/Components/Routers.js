@@ -19,7 +19,7 @@ function Routers() {
     const globalStateTheme = useSelector(state => state.theme)
 
     return (
-                <div id={globalStateTheme ? 'dark' : 'light'}>
+                <div id={globalStateTheme ? 'light' : 'dark'}>
 
                     <div className='body'>
                         <Routes>
